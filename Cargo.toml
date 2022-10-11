@@ -1,0 +1,13 @@
+[package]
+name = "bevy_image_config"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+bevy = {version = "0.8", features = ["bevy_asset", "render"] } 
+bimap = "0.6.2"
+wgpu = { version = "0.13.1", features = ["replay"] }
+ron = "0.8.0"
+serde = { version = "1.0.145", features = ["derive"] }
+anyhow = "1.0.65"

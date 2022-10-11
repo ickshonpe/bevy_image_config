@@ -1,0 +1,4 @@
+(
+    min_filter: nearest,
+    mag_filter: nearest
+)
