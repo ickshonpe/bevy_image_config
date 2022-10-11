@@ -4,6 +4,10 @@ version = "0.1.0"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 keywords = ["bevy", "texture", "loading", "configuration", "games"]
+categories = ["game-development", "graphics"]
+repository = "https://github.com/ickshonpe/bevy_image_config"
+description = "Bevy plugin that automatically configures image assets when they load"
+readme = "README.md"
 
 [dependencies]
 bevy = {version = "0.8", features = ["bevy_asset", "render"] } 
