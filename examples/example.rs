@@ -1,9 +1,6 @@
 use bevy::prelude::*;
 
-fn setup(
-    mut commands: Commands, 
-    asset_server: Res<AssetServer>,
-) {
+fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     commands.spawn_bundle(Camera2dBundle::default());
 
     let s = 100.0 * Vec3::X;
@@ -18,14 +15,12 @@ fn setup(
             ..Default::default()
         });
     }
-
 }
 
 fn main() {
     App::new()
-    .add_plugins(DefaultPlugins)
-    .add_plugin(bevy_image_config::ImageConfigPlugin)
-    .add_startup_system(setup)
-    .run();
-
+        .add_plugins(DefaultPlugins)
+        .add_plugin(bevy_image_config::ImageConfigPlugin)
+        .add_startup_system(setup)
+        .run();
 }
