@@ -11,7 +11,7 @@ Bevy plugin that automatically loads and applies image sampler settings for imag
 Add the dependency to `Cargo.toml`:
 
 ```toml
-bevy_image_config = "0.1.1"
+bevy_image_config = "0.2"
 ```
 
 Add the plugin to your app:
