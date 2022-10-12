@@ -10,7 +10,7 @@ use bimap::BiMap;
 use serde::Deserialize;
 use std::num::NonZeroU8;
 
-const IMG_CFG_EXTENSION: &str = "img_cfg";
+const IMG_CFG_EXTENSION: &str = "img_cfg.ron";
 
 #[derive(Copy, Clone, Debug, Default, Deserialize)]
 enum FilterMode {
@@ -172,7 +172,7 @@ fn config_image(
     mut image_config_asset_events: EventReader<AssetEvent<ImageSamplerConfig>>,
     mut image_assets: ResMut<Assets<Image>>,
     config_assets: Res<Assets<ImageSamplerConfig>>,
-    mut image_configs: ResMut<ImageConfigs>,
+    mut image_configs: Local<ImageConfigs>,
 ) {
     for event in image_asset_events.iter() {
         match event {
@@ -187,10 +187,10 @@ fn config_image(
                     }
                 }
             }
-            AssetEvent::Modified { .. } => {}
             AssetEvent::Removed { handle } => {
                 image_configs.remove_by_left(handle);
             }
+            _ => {}
         }
     }
 
@@ -225,7 +225,6 @@ impl Plugin for ImageConfigPlugin {
     fn build(&self, app: &mut App) {
         app.add_asset::<ImageSamplerConfig>()
             .init_asset_loader::<ImageConfigLoader>()
-            .init_resource::<ImageConfigs>()
             .add_system(config_image);
     }
 }
